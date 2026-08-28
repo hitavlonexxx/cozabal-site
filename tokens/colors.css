@@ -1,0 +1,46 @@
+:root{
+  /* Ink — warm near-black, the brand's primary surface */
+  --ink-900:#100E0B; --ink-800:#16130F; --ink-700:#1D1A15; --ink-600:#26221C; --ink-500:#332E26; --ink-400:#453F35;
+
+  /* Bone — warm off-white paper */
+  --bone-050:#FDFBF7; --bone-100:#F8F5EE; --bone-200:#F2EDE3; --bone-300:#E7E0D2; --bone-400:#D8CFBD;
+
+  /* Brass — the single accent */
+  --brass-700:#8C6A34; --brass-600:#A67C41; --brass-500:#C0954F; --brass-400:#C9A063; --brass-300:#D8B682; --brass-200:#E6CFAA;
+
+  /* Neutral text greys tuned for both grounds */
+  --grey-500:#6B6459; --grey-400:#8A8378; --grey-300:#A9A29A; --grey-200:#C6C0B7;
+
+  /* Semantic */
+  --success:#6E8B5B; --warning:#C08F4E; --danger:#A2493C; --info:#5E7284;
+
+  /* Aliases — dark ground (default for hero, services, footer) */
+  --surface-page:var(--bone-100);
+  --surface-ink:var(--ink-800);
+  --surface-ink-deep:var(--ink-900);
+  --surface-card:#FFFFFF;
+  --surface-card-ink:var(--ink-700);
+  --surface-raised:var(--ink-600);
+
+  --text-heading:var(--ink-900);
+  --text-body:var(--grey-500);
+  --text-muted:var(--grey-400);
+  --text-on-ink:var(--bone-100);
+  --text-on-ink-muted:var(--grey-300);
+  --text-eyebrow:var(--brass-600);
+  --text-accent:var(--brass-400);
+  --text-link:var(--brass-600);
+  --text-link-hover:var(--brass-700);
+
+  --border-hairline:rgba(16,14,11,.12);
+  --border-hairline-ink:rgba(230,207,170,.16);
+  --border-brass:rgba(201,160,99,.45);
+
+  --accent:var(--brass-400);
+  --accent-hover:var(--brass-500);
+  --accent-press:var(--brass-600);
+  --on-accent:var(--ink-900);
+
+  --overlay-image:linear-gradient(180deg,rgba(16,14,11,.10) 0%,rgba(16,14,11,.55) 55%,rgba(16,14,11,.88) 100%); /* @kind other */
+  --overlay-hero:linear-gradient(100deg,rgba(16,14,11,.94) 0%,rgba(16,14,11,.72) 38%,rgba(16,14,11,.18) 72%,rgba(16,14,11,.34) 100%); /* @kind other */
+}

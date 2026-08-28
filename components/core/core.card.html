@@ -1,0 +1,39 @@
+<!-- @dsCard group="Components" viewport="700x320" name="Core" subtitle="Buttons, icon buttons, eyebrow, heading, rules" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@0.470.0/dist/umd/lucide.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>html,body{margin:0}body{width:700px;height:320px;box-sizing:border-box;background:var(--bone-100);font-family:var(--font-sans)}#root{padding:20px 24px}.lb{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-400);margin-bottom:8px}</style></head><body><div id="root"></div>
+<script type="text/babel">
+const { Button, IconButton, Icon, Eyebrow, Heading, HeadingAccent, Divider, ImageFrame, ProjectCard, ServiceCard, InsightCard, StatItem, ProcessStep, Wordmark, NavBar, StatBar, SectionIntro, ContactRow, SocialRow, Footer } = window.COZABALDesignSystem_6929d1;
+function Card(){return (<div>
+  <div className="lb">buttons — light ground</div>
+  <div style={{display:'flex',gap:12,alignItems:'center',flexWrap:'wrap'}}>
+    <Button variant="primary" size="md">Explore our work</Button>
+    <Button variant="outline" size="sm">View all projects</Button>
+    <Button variant="brass" size="sm" showIcon={false}>Get in touch</Button>
+    <Button variant="ghost" size="sm">Read more</Button>
+    <Button variant="primary" size="sm" disabled>Disabled</Button>
+  </div>
+  <div style={{height:1,background:'var(--border-hairline)',margin:'18px 0'}}/>
+  <div style={{display:'flex',gap:34,alignItems:'flex-start'}}>
+    <div><div className="lb">icon buttons</div>
+      <div style={{display:'flex',gap:10}}>
+        <IconButton name="arrow-right" ground="light" />
+        <IconButton name="arrow-up-right" filled ground="light" />
+        <IconButton name="plus" size={30} ground="light" />
+      </div></div>
+    <div><div className="lb">icons — 1.25 stroke</div>
+      <div style={{display:'flex',gap:14,color:'var(--brass-600)'}}>
+        {['compass','home','building-2','armchair','clipboard-list','mail','phone','map-pin'].map(n=><Icon key={n} name={n} size={22}/>)}
+      </div></div>
+  </div>
+  <div style={{height:1,background:'var(--border-hairline)',margin:'18px 0'}}/>
+  <div className="lb">eyebrow + display heading</div>
+  <Eyebrow>Architecture that inspires</Eyebrow>
+  <Heading size="md" style={{marginTop:8}}>We Build <HeadingAccent>Timeless</HeadingAccent> Spaces.</Heading>
+</div>)}
+ReactDOM.createRoot(document.getElementById('root')).render(<Card />);
+</script></body></html>

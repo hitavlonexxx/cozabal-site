@@ -1,0 +1,10 @@
+:root{
+  --ease-standard:cubic-bezier(.22,.61,.36,1); /* @kind other */
+  --ease-out-soft:cubic-bezier(.16,.84,.44,1); /* @kind other */
+  --dur-fast:140ms; /* @kind other */
+  --dur-base:240ms; /* @kind other */
+  --dur-slow:420ms; /* @kind other */
+  --dur-image:700ms; /* @kind other */        /* image scale on card hover */
+  --lift:-2px; /* @kind other */              /* hover translate for cards */
+  --press-scale:.985; /* @kind other */
+}

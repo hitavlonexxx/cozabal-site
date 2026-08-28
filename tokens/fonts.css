@@ -1,0 +1,5 @@
+/* COZABAL webfonts. SUBSTITUTION: no font binaries were provided with the
+   reference artwork. Manrope is used for all headings and Jost for the
+   geometric letterspaced sans. Swap the @import for local @font-face rules
+   when the real files arrive. */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap");

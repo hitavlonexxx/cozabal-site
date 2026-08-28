@@ -1,0 +1,167 @@
+/* Mobile breakpoint (≤767px).
+
+   Safety rule this file follows strictly, because a previous attempt let mobile
+   rules leak into desktop:
+   1. Every custom property declared at bare `:root` (unguarded) here is a NEW
+      name that doesn't exist elsewhere, and its default value is copy-pasted
+      from the exact literal it replaces in the component/screen — so outside
+      the media query below, nothing renders any differently than a plain
+      literal would.
+   2. Every class selector in this file lives INSIDE `@media (max-width:767px)`.
+      There is no unguarded class rule anywhere in this file — a className can
+      be safely added to markup with zero desktop effect, because no rule for
+      it exists outside the query.
+   3. `!important` is used only inside the media query, only to beat an inline
+      style set by the same component — never anywhere unguarded. */
+
+:root {
+  --hero-pad: 80px var(--gutter) 120px;
+  --hero-heading-w: 620px;
+  --hero-copy-w: 340px;
+  --statbar-overlap: -56px;
+
+  --rail-featured: 300px 1fr;
+  --mosaic-cols: repeat(3, 1fr);
+  --mosaic-rows: repeat(2, 150px);
+
+  --rail-services: 280px 1fr;
+  --services-cols: repeat(6, 1fr);
+
+  --rail-process: 300px 1fr;
+
+  --rail-insights: 280px 1fr;
+  --insights-cols: repeat(3, 1fr);
+
+  --footer-cols: 1fr 1fr 1.1fr;
+  --footer-gap: 56px;
+
+  --projects-cols: repeat(3, 1fr);
+  --detail-cols: 1fr 300px;
+  --detail-img-cols: 2fr 1fr;
+  --nearby-cols: repeat(3, 1fr);
+  --insights-list-cols: repeat(3, 1fr);
+  --contact-cols: 1fr 320px;
+  --form-cols: 1fr 1fr;
+}
+
+@media (max-width: 767px) {
+  /* All text centred, per request. Inherited from body so it reaches every
+     heading/paragraph/label without touching each component; inputs are
+     excluded since centred typed text in a form field reads as broken, not
+     intentional. */
+  body { text-align: center; }
+  input, textarea { text-align: left; }
+
+  .section-intro { max-width: 100% !important; }
+  .stack-center { align-items: center !important; }
+  .filter-row { justify-content: center !important; }
+
+  :root {
+    /* Shared tokens — already referenced everywhere via var(), so shrinking
+       them here reaches every component without touching a single file. */
+    --gutter: 20px;
+    --section-y: 56px;
+    --section-y-tight: 40px;
+    --grid-gap: 10px;
+    --stat-size: 26px;
+    --display-md: 24px;
+    --display-sm: 19px;
+    --display-xs: 16px;
+
+    --hero-pad: 96px var(--gutter) 44px;
+    --hero-heading-w: 100%;
+    --hero-copy-w: 100%;
+    --statbar-overlap: -28px;
+
+    --rail-featured: 1fr;
+    --mosaic-cols: 1fr;
+    --mosaic-rows: repeat(4, 200px);
+
+    --rail-services: 1fr;
+    --services-cols: repeat(2, 1fr);
+
+    --rail-process: 1fr;
+
+    --rail-insights: 1fr;
+    --insights-cols: 1fr;
+
+    --footer-cols: 1fr;
+    --footer-gap: 40px;
+
+    --projects-cols: 1fr;
+    --detail-cols: 1fr;
+    --detail-img-cols: 1fr;
+    --nearby-cols: 1fr;
+    --insights-list-cols: 1fr;
+    --contact-cols: 1fr;
+    --form-cols: 1fr;
+  }
+
+  /* Hero: text now wraps full-width, so the left-to-right protective fade
+     becomes an even vertical scrim instead — otherwise wrapped lines drift
+     into the undarkened photo. */
+  .hero-scrim {
+    background: linear-gradient(180deg, rgba(16,14,11,.72) 0%, rgba(16,14,11,.5) 45%, rgba(16,14,11,.8) 100%) !important;
+  }
+
+  /* Navbar → hamburger overlay */
+  .navbar-links-desktop { display: none !important; }
+  .navbar-actions-desktop { display: none !important; }
+  .navbar-burger { display: inline-flex !important; }
+  .nav-links {
+    display: flex !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 101 !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 44px !important;
+    background: var(--surface-ink-deep);
+    padding: 40px 20px;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 260ms var(--ease-out-soft), visibility 260ms;
+  }
+  .nav-links.open { opacity: 1; visibility: visible; pointer-events: auto; }
+  /* Large, unadorned, sentence-case links — an editorial full-screen menu
+     rather than the compact uppercase desktop nav style. */
+  .nav-links a {
+    font-family: var(--font-display) !important;
+    font-size: 2rem !important;
+    font-weight: var(--weight-regular) !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  .nav-links-cta { display: block !important; margin-top: 8px; }
+
+  /* Stat bar → centred 2×2 grid */
+  .stat-bar {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 22px 16px !important;
+    padding: 26px 22px !important;
+  }
+  .stat-divider { display: none !important; }
+
+  /* Featured-projects mosaic: tall cards no longer span two rows */
+  .mosaic-tall { grid-row: auto !important; }
+
+  /* Process timeline: vertical, centred list instead of a horizontal dashed line */
+  .process-row { flex-direction: column !important; align-items: center !important; gap: 32px !important; }
+  .process-line { display: none !important; }
+
+  /* Footer legal bar: stack and centre instead of space-between */
+  .footer-legal { flex-direction: column !important; align-items: center !important; gap: 14px !important; text-align: center; }
+
+  /* Insights "more" list rows: date stacks above title instead of a baseline row */
+  .more-row { flex-direction: column !important; align-items: center !important; gap: 8px !important; }
+  .more-date { width: auto !important; }
+
+  /* Contact: lead with the studio card (phone/email/address), form follows */
+  .contact-layout > aside { order: -1; }
+}

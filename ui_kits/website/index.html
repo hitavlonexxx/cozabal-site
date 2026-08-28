@@ -1,0 +1,47 @@
+<!-- @dsCard group="Website" viewport="1280x860" name="Marketing site" subtitle="Home, projects, project detail, insights, contact" -->
+<!-- @startingPoint section="Website" subtitle="COZABAL marketing site — 5 click-through screens" viewport="1280x860" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>COZABAL — Website UI kit</title>
+<link rel="stylesheet" href="../../styles.css?v=resp9">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@0.470.0/dist/umd/lucide.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="../../_ds_bundle.js?v=resp9"></script>
+<style>
+html,body{margin:0;background:var(--surface-page)}a{color:var(--text-link)}a:hover{color:var(--text-link-hover)}
+</style>
+</head><body>
+<div id="root"></div>
+<script type="text/babel" src="overrides.jsx?v=resp9"></script>
+<script type="text/babel" src="data.jsx?v=resp9"></script>
+<script type="text/babel" src="Chrome.jsx?v=resp9"></script>
+<script type="text/babel" src="HomeScreen.jsx?v=resp9"></script>
+<script type="text/babel" src="ProjectsScreen.jsx?v=resp9"></script>
+<script type="text/babel" src="ProjectDetailScreen.jsx?v=resp9"></script>
+<script type="text/babel" src="InsightsScreen.jsx?v=resp9"></script>
+<script type="text/babel" src="ContactScreen.jsx?v=resp9"></script>
+<script type="text/babel">
+// Buttery momentum scroll — same Lenis setup the library's own docs recommend.
+const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+
+function App() {
+  const [page, setPage] = React.useState('Home');
+  const go = (p) => {
+    if (p === page) return;
+    setPage(p);
+    lenis.scrollTo(0, { immediate: true });
+  };
+  React.useEffect(() => { window.lucide && window.lucide.createIcons({ nameAttr: 'data-lucide' }); }, [page]);
+  const map = {
+    Home: window.HomeScreen, Projects: window.ProjectsScreen, Project: window.ProjectDetailScreen,
+    Insights: window.InsightsScreen, Contact: window.ContactScreen,
+  };
+  const Screen = map[page] || map.Home;
+  return <Screen onNavigate={go} />;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body></html>
